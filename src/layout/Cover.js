@@ -14,7 +14,7 @@ export default Cover;
 const BgImage = styled.div`
     background-image: url('https://images.unsplash.com/photo-1524712245354-2c4e5e7121c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80');
     width: 100%;
-    height: 600px;
+    height: 700px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

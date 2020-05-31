@@ -2,10 +2,11 @@ import React, { Fragment } from 'react';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 import styled from 'styled-components';
-import { Container } from 'semantic-ui-react';
+import { Container, Dimmer, Loader } from 'semantic-ui-react';
 
 import Movie from '../components/Movie';
 import Cover from '../layout/Cover';
+import News from '../components/News';
 
 const GET_MOVIES = gql`
     {
@@ -25,39 +26,50 @@ export default () => {
 
     return (
         <Fragment>
-            <Cover />
-            <br />
-            <Container>
-                {loading && <Loading>Loading...</Loading>}
-                <Movies style={{ textAlign: 'center' }}>
-                    {data?.movies?.map((m) => (
-                        <Movie
-                            key={m.id}
-                            id={m.id}
-                            isLiked={m.isLiked}
-                            bg={m.medium_cover_image}
-                            title={m.title}
-                            rating={m.rating}
-                        />
-                    ))}
-                </Movies>
-            </Container>
+            {loading ? (
+                <Dimmer active>
+                    <Loader size='large'>Loading</Loader>
+                </Dimmer>
+            ) : (
+                <Fragment>
+                    <Cover />
+                    <Bg>
+                        <br />
+                        <Container>
+                            <Title>Don't miss these Hot Movies!</Title>
+                            <br />
+                            <Movies style={{ textAlign: 'center' }}>
+                                {data?.movies?.map((m) => (
+                                    <Movie
+                                        key={m.id}
+                                        id={m.id}
+                                        bg={m.medium_cover_image}
+                                        title={m.title}
+                                        rating={m.rating}
+                                        isLiked={m.isLiked}
+                                    />
+                                ))}
+                            </Movies>
+                            <br />
+                            <Title>Latest News</Title>
+                            <br />
+                            <News />
+                        </Container>
+                    </Bg>
+                </Fragment>
+            )}
         </Fragment>
     );
 };
 
-// const Container = styled.div`
-//     display: flex;
-//     // flex-direction: row;
-//     align-items: center;
-//     width: 100%;
-//     margin: 0 auto;
-// `;
-const Loading = styled.div`
-    font-size: 18px;
-    opacity: 0.5;
-    font-weight: 500;
-    margin-top: 10px;
+const Bg = styled.div`
+    background-color: black;
+`;
+const Title = styled.div`
+    color: white;
+    font-size: var(--fs-h3);
+    font-family: var(--ff-secondary);
+    padding: 4rem 0 3rem 0;
 `;
 const Movies = styled.div`
     display: grid;

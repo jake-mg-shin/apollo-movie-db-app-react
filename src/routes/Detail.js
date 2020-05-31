@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 import styled from 'styled-components';
+import { Dimmer, Loader } from 'semantic-ui-react';
 
 const GET_MOVIE = gql`
     query getMovie($id: Int!) {
@@ -27,29 +28,36 @@ export default () => {
     });
     // console.log(data);
     return (
-        <Container>
-            <Column>
-                <Title>
-                    {loading
-                        ? 'Loading...'
-                        : `${data.movie.title} ${
-                              data.movie.isLiked ? '❤️' : ''
-                          }`}
-                </Title>
-                {!loading && (
-                    <>
-                        <Subtitle>
-                            {data?.movie?.language} | {data?.movie?.year} |{' '}
-                            {data?.movie?.rating}
-                        </Subtitle>
-                        <Description>
-                            {data?.movie?.description_intro}
-                        </Description>
-                    </>
-                )}
-            </Column>
-            <Poster bg={data?.movie?.medium_cover_image}></Poster>
-        </Container>
+        <Fragment>
+            {loading && (
+                <Dimmer active>
+                    <Loader size='large'>Loading</Loader>
+                </Dimmer>
+            )}
+            <Container>
+                <Column>
+                    <Title>
+                        {loading
+                            ? 'Loading...'
+                            : `${data.movie.title} ${
+                                  data.movie.isLiked ? '❤️' : ''
+                              }`}
+                    </Title>
+                    {!loading && (
+                        <>
+                            <Subtitle>
+                                {data?.movie?.language} | {data?.movie?.year} |{' '}
+                                {data?.movie?.rating}
+                            </Subtitle>
+                            <Description>
+                                {data?.movie?.description_intro}
+                            </Description>
+                        </>
+                    )}
+                </Column>
+                <Poster bg={data?.movie?.medium_cover_image}></Poster>
+            </Container>
+        </Fragment>
     );
 };
 
