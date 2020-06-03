@@ -19,12 +19,14 @@ const BgImage = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    z-index: -1;
 
-    // @media only screen and (max-width: 991px) {
-    //     height: 600px;
-    // }
-    // @media only screen and (max-width: 767px) {
-    //     height: 500px;
-    // }
+    @media only screen and (max-width: 1024px) {
+        height: 700px;
+    }
+    @media only screen and (max-width: 768px) {
+        height: 600px;
+    }
+    @media only screen and (max-width: 414px) {
+        height: 500px;
+    }
 `;

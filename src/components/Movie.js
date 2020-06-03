@@ -55,8 +55,6 @@ const MovieWrapper = styled.div`
     position: relative;
     width: 100%;
     box-sizing: border-box;
-    // border: 1px solid black;
-    // border: 1px solid white;
     padding: 1em 0;
 `;
 const Poster = styled.img`

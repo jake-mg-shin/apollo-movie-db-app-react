@@ -8,8 +8,6 @@
 :root {
     --ff-primary: 'Source Sans Pro', sans-serif;
     --ff-secondary: 'Source Code Pro', monospace;
-    --ff-third: 'eurostile', sans-serif;
-    --ff-forth: 'europa', sans-serif;
 
     --fw-reg: 400;
     --fw-bold: 700;
@@ -36,6 +34,11 @@
         --fs-body: 1.5rem;
     }
 }
+
+body {
+    background-color: black !important;
+}
+
 .__hover:hover {
     transform: scale(1.02);
 }

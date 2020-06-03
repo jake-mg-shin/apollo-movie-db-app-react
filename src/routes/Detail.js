@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 import styled from 'styled-components';
-import { Dimmer, Loader } from 'semantic-ui-react';
+import { Dimmer, Loader, Container } from 'semantic-ui-react';
 
 const GET_MOVIE = gql`
     query getMovie($id: Int!) {
@@ -26,7 +26,9 @@ export default () => {
     const { loading, data } = useQuery(GET_MOVIE, {
         variables: { id: parseInt(id) },
     });
-    // console.log(data);
+    console.log(data);
+    // const like = data.movie;
+    // console.log(like);
     return (
         <Fragment>
             {loading && (
@@ -34,62 +36,77 @@ export default () => {
                     <Loader size='large'>Loading</Loader>
                 </Dimmer>
             )}
-            <Container>
-                <Column>
-                    <Title>
-                        {loading
-                            ? 'Loading...'
-                            : `${data.movie.title} ${
-                                  data.movie.isLiked ? '❤️' : ''
-                              }`}
-                    </Title>
+            <Container style={{ color: 'white' }}>
+                <Content>
+                    <Poster src={data?.movie?.medium_cover_image} />
+
+                    {/* <Column> */}
+                    {/* `${
+                        data.movie.isLiked ? 'You like this movie' : ''
+                    }`} */}
                     {!loading && (
-                        <>
+                        <DescWrapper>
+                            <Title>{data?.movie?.title}</Title>
                             <Subtitle>
-                                {data?.movie?.language} | {data?.movie?.year} |{' '}
+                                {data?.movie?.year} | {data?.movie?.language} |{' '}
+                                <span role='img' aria-label='rating'>
+                                    ⭐️
+                                </span>{' '}
                                 {data?.movie?.rating}
                             </Subtitle>
                             <Description>
                                 {data?.movie?.description_intro}
                             </Description>
-                        </>
+                        </DescWrapper>
                     )}
-                </Column>
-                <Poster bg={data?.movie?.medium_cover_image}></Poster>
+                    {/* </Column> */}
+                </Content>
             </Container>
         </Fragment>
     );
 };
 
-const Container = styled.div`
-    height: 100vh;
-    background-image: linear-gradient(-45deg, #d754ab, #fd723a);
-    width: 100%;
+const Content = styled.div`
+    position: relative;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: white;
+    flex-direction: row;
 `;
-const Column = styled.div`
-    margin-left: 10px;
-    width: 50%;
+const Poster = styled.img`
+display: flex;
+    width: 100%
+    height: auto;
+    padding: 2em 0;
+`;
+const DescWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    padding: 2em;
 `;
 const Title = styled.h1`
-    font-size: 65px;
-    margin-bottom: 15px;
+    font-size: var(--fs-h3);
+    padding: 10px;
 `;
-const Subtitle = styled.h4`
-    font-size: 35px;
+const Subtitle = styled.div`
+    font-size: var(--fs-body);
     margin-bottom: 10px;
+    padding: 10px;
 `;
 const Description = styled.p`
-    font-size: 28px;
+    font-size: 15px;
+    padding: 10px;
 `;
-const Poster = styled.div`
-    width: 25%;
-    height: 60%;
-    background-color: transparent;
-    background-image: url(${(props) => props.bg});
-    background-size: cover;
-    background-position: center center;
-`;
+
+// const Container = styled.div`
+//     height: 100vh;
+//     background-image: linear-gradient(-45deg, #d754ab, #fd723a);
+//     width: 100%;
+//     display: flex;
+//     justify-content: space-around;
+//     align-items: center;
+//     color: white;
+// `;
+// const Column = styled.div`
+//     margin-left: 10px;
+//     width: 50%;
+// `;
