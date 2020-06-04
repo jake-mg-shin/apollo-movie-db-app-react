@@ -9,8 +9,8 @@ import Cover from '../layout/Cover';
 import News from '../components/News';
 
 const GET_MOVIES = gql`
-    {
-        movies {
+    query getMovies($limit: Int!) {
+        movies(limit: $limit) {
             id
             medium_cover_image
             title
@@ -21,8 +21,12 @@ const GET_MOVIES = gql`
 `;
 
 export default () => {
-    const { loading, data } = useQuery(GET_MOVIES);
+    const { loading, err, data } = useQuery(GET_MOVIES, {
+        variables: { limit: parseInt(10) },
+    });
     // console.log(loading, data);
+
+    if (err) return <p>An error occurred</p>;
 
     return (
         <Fragment>

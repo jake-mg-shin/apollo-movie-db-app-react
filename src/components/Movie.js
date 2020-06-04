@@ -15,9 +15,10 @@ export default ({ id, bg, rating, isLiked }) => {
     const [LikeMovie] = useMutation(LIKE_MOVIE, {
         variables: { id: parseInt(id), isLiked },
     });
+
     return (
         <MovieWrapper>
-            <Link to={`/${id}`}>
+            <Link to={`/movie/${id}`}>
                 <Poster src={bg} />
             </Link>
             <Content>

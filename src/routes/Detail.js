@@ -23,12 +23,15 @@ const GET_MOVIE = gql`
 export default () => {
     let { id } = useParams();
     // console.log(typeof id);
-    const { loading, data } = useQuery(GET_MOVIE, {
+    const { loading, err, data } = useQuery(GET_MOVIE, {
         variables: { id: parseInt(id) },
     });
     console.log(data);
     // const like = data.movie;
     // console.log(like);
+
+    if (err) return <p>An error occurred</p>;
+
     return (
         <Fragment>
             {loading && (
