@@ -1,11 +1,10 @@
 import React from 'react';
-// import { Container, Loader } from 'semantic-ui-react';
 import styled from 'styled-components';
 
-export default ({ title, img, pub, link }) => {
+export default ({ title, url, pub, link }) => {
     return (
         <FeedWrapper href={link} target='_blank'>
-            <FeedImg src={img} alt={title} />
+            <FeedImg src={url} alt={title} />
             <Title>{title}</Title>
             <Date>{pub}</Date>
         </FeedWrapper>

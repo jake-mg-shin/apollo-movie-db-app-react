@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment } from 'react';
+import { gql } from 'apollo-boost';
+import { useQuery } from '@apollo/react-hooks';
 import { Loader } from 'semantic-ui-react';
-import Parser from 'rss-parser';
 import styled from 'styled-components';
 
 import Carousel from 'react-multi-carousel';
@@ -8,9 +9,22 @@ import 'react-multi-carousel/lib/styles.css';
 
 import Feed from './Feed';
 
+const GET_NEWS = gql`
+    query getNews {
+        news {
+            title
+            pubDate
+            link
+            url
+        }
+    }
+`;
+
 const News = () => {
-    const [news, setNews] = useState(null);
-    const [loadingNews, setLoadingNews] = useState(true);
+    const { loading, err, data } = useQuery(GET_NEWS);
+    // console.log(loading, data);
+
+    if (err) return <p>An error occurred</p>;
 
     const responsive = {
         desktop: {
@@ -30,62 +44,43 @@ const News = () => {
         },
     };
 
-    useEffect(() => {
-        const getNews = async () => {
-            const url = 'https://movieweb.com/rss/movie-news/';
-            const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
-            let parser = new Parser();
-            let data = await parser.parseURL(CORS_PROXY + url);
-
-            let feed = [];
-            for (let i = 0; i < 15; i++) {
-                feed.push(data.items[i]);
-            }
-
-            setNews(feed);
-            setLoadingNews(false);
-        };
-        getNews();
-        // eslint-disable-next-line
-    }, []);
-
-    // console.log(news);
-
     return (
-        <NewsWrapper>
-            <Carousel
-                swipeable={true}
-                draggable={true}
-                showDots={false}
-                responsive={responsive}
-                ssr={false} // means to render carousel on server-side.
-                infinite={false}
-                // autoPlay={this.props.deviceType !== 'mobile' ? true : false}
-                autoPlaySpeed={1000}
-                keyBoardControl={true}
-                customTransition='all .5'
-                transitionDuration={800}
-                containerClass='carousel-container'
-                removeArrowOnDeviceType={['tablet', 'mobile']}
-                // deviceType={this.props.deviceType}
-                dotListClass='custom-dot-list-style'
-                itemClass='carousel-item-padding-40-px'
-            >
-                {loadingNews ? (
-                    <Loader size='small'>Loading</Loader>
-                ) : (
-                    news.map((f, i) => (
-                        <Feed
-                            key={i}
-                            title={f.title}
-                            img={f.enclosure.url}
-                            pub={f.pubDate}
-                            link={f.link}
-                        />
-                    ))
-                )}
-            </Carousel>
-        </NewsWrapper>
+        <Fragment>
+            {loading ? (
+                <Loader size='small'>Loading</Loader>
+            ) : (
+                <NewsWrapper>
+                    <Carousel
+                        swipeable={true}
+                        draggable={true}
+                        showDots={true}
+                        responsive={responsive}
+                        ssr={false} // means to render carousel on server-side.
+                        infinite={false}
+                        // autoPlay={this.props.deviceType !== 'mobile' ? true : false}
+                        autoPlaySpeed={1000}
+                        keyBoardControl={true}
+                        customTransition='all .5'
+                        transitionDuration={800}
+                        containerClass='carousel-container'
+                        removeArrowOnDeviceType={['tablet', 'mobile']}
+                        // deviceType={this.props.deviceType}
+                        dotListClass='custom-dot-list-style'
+                        itemClass='carousel-item-padding-40-px'
+                    >
+                        {data?.news?.map((f, i) => (
+                            <Feed
+                                key={i}
+                                title={f.title}
+                                url={f.url}
+                                pub={f.pubDate}
+                                link={f.link}
+                            />
+                        ))}
+                    </Carousel>
+                </NewsWrapper>
+            )}
+        </Fragment>
     );
 };
 

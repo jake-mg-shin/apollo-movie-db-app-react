@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 import styled from 'styled-components';
-import { Dimmer, Loader } from 'semantic-ui-react';
+// import { Dimmer, Loader } from 'semantic-ui-react';
 
 import Movie from '../components/Movie';
 import Cover from '../layout/Cover';
@@ -30,36 +30,36 @@ export default () => {
 
     return (
         <Fragment>
-            {loading ? (
+            {/* {loading ? (
                 <Dimmer active>
                     <Loader size='large'>Loading</Loader>
                 </Dimmer>
             ) : (
-                <Fragment>
-                    <Cover />
-                    <Bg>
-                        <br />
-                        <Title>Our the Highest Rating Movies</Title>
-                        <br />
-                        <Movies>
-                            {data?.movies?.map((m) => (
-                                <Movie
-                                    key={m.id}
-                                    id={m.id}
-                                    bg={m.medium_cover_image}
-                                    title={m.title}
-                                    rating={m.rating}
-                                    isLiked={m.isLiked}
-                                />
-                            ))}
-                        </Movies>
-                        <br />
-                        <Title>Latest News</Title>
-                        <br />
-                        <News />
-                    </Bg>
-                </Fragment>
-            )}
+                <Fragment> */}
+            <Cover />
+            <Bg>
+                <br />
+                <Title>Our the Highest Rating Movies</Title>
+                <br />
+                <Movies>
+                    {data?.movies?.map((m) => (
+                        <Movie
+                            key={m.id}
+                            id={m.id}
+                            bg={m.medium_cover_image}
+                            title={m.title}
+                            rating={m.rating}
+                            isLiked={m.isLiked}
+                        />
+                    ))}
+                </Movies>
+                <br />
+                <Title>Latest News</Title>
+                <br />
+                <News />
+            </Bg>
+            {/* </Fragment>
+            )} */}
         </Fragment>
     );
 };
