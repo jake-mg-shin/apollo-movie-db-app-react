@@ -15,7 +15,9 @@ const GET_NEWS = gql`
             title
             pubDate
             link
-            url
+            enclosure {
+                url
+            }
         }
     }
 `;
@@ -51,17 +53,20 @@ const News = () => {
             ) : (
                 <NewsWrapper>
                     <Carousel
+                        focusOnSelect={true}
                         swipeable={true}
                         draggable={true}
                         showDots={true}
                         responsive={responsive}
                         ssr={false} // means to render carousel on server-side.
-                        infinite={false}
-                        // autoPlay={this.props.deviceType !== 'mobile' ? true : false}
+                        infinite={true}
+                        // autoPlay={
+                        //     this.props.deviceType !== 'mobile' ? true : false
+                        // }
                         autoPlaySpeed={1000}
                         keyBoardControl={true}
                         customTransition='all .5'
-                        transitionDuration={800}
+                        transitionDuration={500}
                         containerClass='carousel-container'
                         removeArrowOnDeviceType={['tablet', 'mobile']}
                         // deviceType={this.props.deviceType}
@@ -72,7 +77,7 @@ const News = () => {
                             <Feed
                                 key={i}
                                 title={f.title}
-                                url={f.url}
+                                url={f.enclosure.url}
                                 pub={f.pubDate}
                                 link={f.link}
                             />
@@ -109,5 +114,5 @@ const NewsWrapper = styled.div`
     // //     max-width: 600px;
     // //     margin-top: 1em;
     // // }
-    padding: 0 3rem;
+    // padding: 0 5rem;
 `;

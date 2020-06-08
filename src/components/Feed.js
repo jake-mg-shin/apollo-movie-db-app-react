@@ -17,7 +17,7 @@ const FeedWrapper = styled.a`
     width: 100%;
     box-sizing: border-box;
     border: 1px solid black;
-    padding: 1em;
+    // padding: 1em;
 `;
 const FeedImg = styled.img`
     display: block;

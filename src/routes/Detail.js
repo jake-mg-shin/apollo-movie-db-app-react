@@ -5,6 +5,8 @@ import { useQuery } from '@apollo/react-hooks';
 import styled from 'styled-components';
 import { Dimmer, Loader, Container } from 'semantic-ui-react';
 
+import Trailers from '../components/Trailers';
+
 const GET_MOVIE = gql`
     query getMovie($id: Int!) {
         movie(id: $id) {
@@ -15,6 +17,9 @@ const GET_MOVIE = gql`
             year
             rating
             description_intro
+            genres
+            runtime
+            mpa_rating
             isLiked @client
         }
     }
@@ -22,13 +27,10 @@ const GET_MOVIE = gql`
 
 export default () => {
     let { id } = useParams();
-    // console.log(typeof id);
+
     const { loading, err, data } = useQuery(GET_MOVIE, {
         variables: { id: parseInt(id) },
     });
-    console.log(data);
-    // const like = data.movie;
-    // console.log(like);
 
     if (err) return <p>An error occurred</p>;
 
@@ -64,6 +66,7 @@ export default () => {
                     )}
                     {/* </Column> */}
                 </Content>
+                <Trailers title={data?.movie?.title} />
             </Container>
         </Fragment>
     );

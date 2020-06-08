@@ -60,8 +60,8 @@ const MovieWrapper = styled.div`
 `;
 const Poster = styled.img`
     // background-image: url(${(props) => props.bg});
-    height: auto;
     width: 100%;
+    height: auto;
     // background-size: cover;
     // background-position: center;
 `;
@@ -71,6 +71,8 @@ const Content = styled.div`
     justify-content: space-between;
     padding: 0.5rem;
     font-size: 16px;
+    width: 100%;
+    height: auto;
 `;
 const Rating = styled.div`
     color: white;
