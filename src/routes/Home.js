@@ -24,7 +24,7 @@ const GET_MOVIES = gql`
 
 export default () => {
     const { loading, err, data } = useQuery(GET_MOVIES, {
-        variables: { limit: parseInt(20) },
+        variables: { limit: parseInt(15) },
     });
 
     if (err) return <p>An error occurred</p>;
@@ -43,7 +43,8 @@ export default () => {
                     <Bg>
                         <Container>
                             <br />
-                            <Title>Our the Highest Rating Movies</Title>
+                            <Title>Movies</Title>
+                            <SubTitle>Our the Highest Rating Movies</SubTitle>
                             <br />
                             <Movies>
                                 {data?.movies?.map((m, i) => (
@@ -69,7 +70,8 @@ export default () => {
                                 </em>
                             </Source>
                             <br />
-                            <Title>Latest News</Title>
+                            <Title>News</Title>
+                            <SubTitle>Latest News</SubTitle>
                             <br />
                             <News />
                             <Source>
@@ -100,8 +102,12 @@ const Title = styled.div`
     color: var(--clr-accent);
     font-size: var(--fs-h3);
     font-family: var(--ff-secondary);
-    padding: 4rem 0 3rem 0;
+    padding: 4rem 0 1rem 0;
 `;
+const SubTitle = styled.div`
+    color: white;
+`;
+
 const Movies = styled.div`
     position: relative;
     display: grid;

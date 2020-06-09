@@ -7,6 +7,7 @@ export default ({ title, url, pub, link }) => {
             <FeedImg src={url} alt={title} />
             <Title>{title}</Title>
             <Date>{pub}</Date>
+            <br />
         </FeedWrapper>
     );
 };

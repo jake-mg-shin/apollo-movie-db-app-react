@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { Container } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 
 const Nav = () => {
     const refreshPage = () => {
@@ -9,6 +9,7 @@ const Nav = () => {
 
     return (
         <Container>
+            {/* <Wrapper> */}
             <Navbar>
                 <LogoWrap href='#' onClick={refreshPage}>
                     <Logo>M2DB</Logo>
@@ -19,27 +20,26 @@ const Nav = () => {
                     <Menu>News</Menu>
                 </MenuWrap>
             </Navbar>
+            {/* </Wrapper> */}
         </Container>
     );
 };
 
 export default Nav;
 
-const Container = styled.section`
+const Wrapper = styled.section`
     margin: 0 auto;
     position: absolute;
 `;
 const Navbar = styled.div`
     background-color: black;
     opacity: 0.8;
-    padding: 0 6rem;
+    // padding: 0 6rem;
     position: fixed;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: auto;
     z-index: 10;
     cursor: pointer;
 `;
@@ -48,46 +48,39 @@ const Wrap = styled.div`
     padding: 2em 0 1.5em 0;
 `;
 const LogoWrap = styled(Wrap)`
-    // text-align: left;
+    text-align: left;
 `;
 const MenuWrap = styled(Wrap)`
     flex-direction: row;
 `;
-const Item = styled.div`
-    color: white;
-`;
-const Logo = styled(Item)`
-    border: 1px solid var(--clr-accent);
+const Logo = styled.div`
+    font-size: var(--fs-h3);
+    font-family: 'Monoton', cursive;
     color: black;
+    border: 1px solid var(--clr-accent);
     background-color: var(--clr-accent);
     border-radius: 5px;
     padding: 0.6rem;
-    font-size: var(--fs-h3);
-    font-family: 'Monoton', cursive;
     transition: background-color 0.2s ease-in-out;
 
     :hover {
-        // border-color: var(--clr-accent);
-        // background-color: var(--clr-accent);
         border-color: white;
         background-color: black;
         color: white;
         transition: border 0.5s ease-in-out;
     }
 `;
-const Menu = styled(Item)`
-    padding: 0.4rem;
-    margin: 0 2rem;
+const Menu = styled.div`
     font-size: var(--fs-body);
-    font-family: var(--ff-primary);
+    font-family: var(--ff-secondary);
+    color: white;
+    padding: 0.4rem;
+    margin-left: 3rem;
     border-bottom: 4px solid black;
     transition: border 0.2s ease-in-out;
 
     :hover {
-        // border-bottom: 4px solid var(--clr-accent);
         border-color: var(--clr-accent);
-        // background-color: var(--clr-accent);
-        // color: black;
         transition: border 0.5s ease-in-out;
     }
 `;
