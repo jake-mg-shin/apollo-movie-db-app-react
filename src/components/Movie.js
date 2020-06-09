@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { gql } from 'apollo-boost';
@@ -17,13 +17,15 @@ export default ({ id, bg, rating, isLiked }) => {
     });
 
     return (
-        <MovieWrapper>
-            <Link to={`/movie/${id}`}>
-                <Poster src={bg} />
+        <Wrapper>
+            <MovieWrapper>
+                <Link to={`/movie/${id}`}>
+                    <Poster src={bg} />
+                </Link>
                 <Overlay>
                     <Button>Learn More</Button>
                 </Overlay>
-            </Link>
+            </MovieWrapper>
             <Content>
                 <Rating>
                     <span role='img' aria-label='rating'>
@@ -50,27 +52,27 @@ export default ({ id, bg, rating, isLiked }) => {
                     </div>
                 </Like>
             </Content>
-        </MovieWrapper>
+        </Wrapper>
     );
 };
-
+const Wrapper = styled.div`
+    display: block;
+    position: relative;
+`;
 const MovieWrapper = styled.div`
     display: block;
     position: relative;
     width: 100%;
     box-sizing: border-box;
-    padding: 1em 0;
-`;
-const Poster = styled.img`
-    // background-image: url(${(props) => props.bg});
-    width: 100%;
-    height: auto;
-    // background-size: cover;
-    // background-position: center;
+    padding-top: 1.5em;
 
     :hover {
-        filter: blur(3px);
+        cursor: pointer;
     }
+`;
+const Poster = styled.img`
+    width: 100%;
+    height: auto;
 `;
 const Content = styled.div`
     display: flex;
@@ -86,6 +88,9 @@ const Rating = styled.div`
 `;
 const Like = styled.div`
     background-color: black;
+    :hover {
+        cursor: pointer;
+    }
 `;
 
 const Overlay = styled.div`
@@ -97,7 +102,6 @@ const Overlay = styled.div`
     right: 0;
     width: 100%;
     height: auto;
-    // border-radius: 5px;
     opacity: 0;
     -webkit-transition: 0.5s ease;
     -o-transition: 0.5s ease;
@@ -129,11 +133,3 @@ const Button = styled.div`
         transition: background-color 0.5s ease-in-out;
     }
 `;
-
-// const Container = styled.div`
-//     height: 400px;
-//     border-radius: 7px;
-//     width: 100%;
-//     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-//     background-color: transparent;
-// `;

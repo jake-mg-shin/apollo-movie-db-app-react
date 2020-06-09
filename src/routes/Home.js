@@ -44,7 +44,10 @@ export default () => {
                         <Container>
                             <br />
                             <Title>Movies</Title>
-                            <SubTitle>Our the Highest Rating Movies</SubTitle>
+                            <SubTitle>
+                                <i className='fas fa-ellipsis-v'></i> &nbsp;Our
+                                the Highest Rating Movies
+                            </SubTitle>
                             <br />
                             <Movies>
                                 {data?.movies?.map((m, i) => (
@@ -71,7 +74,10 @@ export default () => {
                             </Source>
                             <br />
                             <Title>News</Title>
-                            <SubTitle>Latest News</SubTitle>
+                            <SubTitle>
+                                <i className='fas fa-ellipsis-v'></i>{' '}
+                                &nbsp;Latest News
+                            </SubTitle>
                             <br />
                             <News />
                             <Source>
@@ -99,12 +105,14 @@ const Bg = styled.div`
     background-color: black;
 `;
 const Title = styled.div`
-    color: var(--clr-accent);
-    font-size: var(--fs-h3);
     font-family: var(--ff-secondary);
+    font-size: var(--fs-h3);
+    color: var(--clr-accent);
     padding: 4rem 0 1rem 0;
 `;
 const SubTitle = styled.div`
+    font-family: var(--ff-primary);
+    font-size: var(--fs-body);
     color: white;
 `;
 
