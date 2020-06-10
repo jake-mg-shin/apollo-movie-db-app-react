@@ -1,17 +1,16 @@
 import React, { Fragment } from 'react';
 import styled, { keyframes } from 'styled-components';
-// import { Container } from 'semantic-ui-react';
 
 const Cover = () => {
     return (
         <BgImage>
-            <CoverWrap>
+            <ScreenWrap>
                 <Wrap2>
-                    <CoverSubtitle>Don't miss out!</CoverSubtitle>
-                    <CoverDesc>Experience a special Movie DB for you</CoverDesc>
+                    <Text>Don't miss out!</Text>
+                    <Text>Experience a special Movie DB for you</Text>
                     <CoverTitle>My Movie DB</CoverTitle>
                 </Wrap2>
-            </CoverWrap>
+            </ScreenWrap>
         </BgImage>
     );
 };
@@ -42,7 +41,7 @@ const slideFade = keyframes`
     opacity: 0.8;
 }
 `;
-const CoverWrap = styled.div`
+const ScreenWrap = styled.div`
     top: 18%;
     left: 57%;
     opacity: 0;
@@ -56,12 +55,18 @@ const CoverWrap = styled.div`
     height: 250px;
     display: flex;
 
-    // @media only screen and (max-width: 991px) {
-    //     padding-top: 15%;
-    // }
-    // @media only screen and (max-width: 767px) {
-    //     padding-top: 18%;
-    // }
+    @media only screen and (max-width: 1024px) {
+        width: 350px;
+        height: 200px;
+    }
+    @media only screen and (max-width: 768px) {
+        width: 400px;
+        height: 250px;
+    }
+    @media only screen and (max-width: 414px) {
+        width: 400px;
+        height: 250px;
+    }
 `;
 const Wrap2 = styled.div`
     font-family: var(--ff-secondary);
@@ -85,30 +90,23 @@ const Wrap2 = styled.div`
 
     box-shadow: 1px 1px 0px #999, 2px 2px 0px #999, 3px 3px 0px #999,
         4px 4px 0px #999, 5px 5px 0px #999;
+
+    @media only screen and (max-width: 1024px) {
+        width: 350px;
+        height: 250px;
+    }
 `;
-const CoverTitle = styled.p`
+const Text = styled.p`
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-bold);
+
+    transform: scale(1, 1.3);
+    text-shadow: 0.03em 0.03em 0 #6d6d6d;
+`;
+const CoverTitle = styled(Text)`
     font-family: 'Monoton', cursive !important;
     font-size: var(--fs-body);
     font-weight: var(--fw-light);
     color: var(--clr-accent);
     text-align: right;
-
-    // margin-bottom: 0;
-    transform: scale(1, 1.3);
-    text-shadow: 0.03em 0.03em 0 #6d6d6d;
-`;
-const CoverSubtitle = styled.p`
-    font-size: var(--fs-h3);
-    font-weight: var(--fw-bold);
-    // margin-bottom: 0;
-    transform: scale(1, 1.3);
-    text-shadow: 0.03em 0.03em 0 #6d6d6d;
-`;
-const CoverDesc = styled.p`
-    font-size: var(--fs-h3);
-    font-weight: var(--fw-bold);
-
-    // margin-bottom: 0;
-    transform: scale(1, 1.3);
-    text-shadow: 0.03em 0.03em 0 #6d6d6d;
 `;

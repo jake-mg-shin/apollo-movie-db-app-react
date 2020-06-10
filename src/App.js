@@ -9,6 +9,7 @@ import {
 import Home from './routes/Home';
 import About from './routes/About';
 import Detail from './routes/Detail';
+// import Footer from './layout/Footer';
 
 export default () => {
     return (
@@ -19,6 +20,7 @@ export default () => {
                 <Route exact path='/' component={Home} />
                 <Redirect from='*' to='/' />
             </Switch>
+            {/* <Footer /> */}
         </Router>
     );
 };

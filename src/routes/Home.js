@@ -48,7 +48,7 @@ export default () => {
                                 <i className='fas fa-ellipsis-v'></i> &nbsp;Our
                                 the Highest Rating Movies
                             </SubTitle>
-                            <br />
+                            {/* <br /> */}
                             <Movies>
                                 {data?.movies?.map((m, i) => (
                                     <Movie
@@ -73,6 +73,7 @@ export default () => {
                                 </em>
                             </Source>
                             <br />
+                            <br />
                             <Title id='news'>News</Title>
                             <SubTitle>
                                 <i className='fas fa-ellipsis-v'></i>{' '}
@@ -92,6 +93,8 @@ export default () => {
                                 </em>
                             </Source>
                             <Footer />
+                            <br />
+                            <br />
                         </Container>
                     </Bg>
                 </Fragment>
@@ -120,7 +123,6 @@ const Movies = styled.div`
     position: relative;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    // padding: 0 6rem;
     margin: 0 auto;
     grid-auto-flow: row dense;
     max-width: 1400px;
@@ -142,5 +144,4 @@ const Source = styled.div`
     color: white;
     opacity: 0.8;
     text-align: right;
-    // padding: 0 6rem;
 `;

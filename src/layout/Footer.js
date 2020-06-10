@@ -5,8 +5,8 @@ export default () => {
     return (
         <Wrapper>
             <Title>
-                This is MyMovieDB Project, is built by Dev.JS with React.js,
-                Apollo, and GraphQL.
+                This is MyMovieDB Project built by Dev.JS with React.js, Apollo,
+                and GraphQL.
             </Title>
             <br />
             <br />
