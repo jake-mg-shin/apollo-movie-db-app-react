@@ -5,7 +5,7 @@ Movie App with React.js and Apollo-Client
 
 ## About
 
-- Provide movies' details which sorted by a API, and the latest news of movie in the world.
+- Provide movies' details which sorted by a API, and the latest news of movies.
 - Provide a trailer of the movie's details from YouTube.
 
 ## Built with
