@@ -30,7 +30,7 @@ export default ({ id, bg, rating, isLiked }) => {
                 <Rating>
                     <span role='img' aria-label='rating'>
                         ⭐️
-                    </span>
+                    </span>{' '}
                     {rating}
                 </Rating>
                 <Like>
@@ -107,7 +107,7 @@ const Overlay = styled.div`
     -o-transition: 0.5s ease;
     transition: 0.5s ease;
     :hover {
-        opacity: 0.8;
+        opacity: 0.7;
         background-color: black;
     }
 `;

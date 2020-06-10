@@ -92,9 +92,6 @@ export default () => {
                                     </a>
                                 </em>
                             </Source>
-                            <Footer />
-                            <br />
-                            <br />
                         </Container>
                     </Bg>
                 </Fragment>
@@ -136,6 +133,12 @@ const Movies = styled.div`
     @media only screen and (max-width: 768px) {
         -ms-grid-columns: (1fr) [3];
         grid-template-columns: repeat(3, 1fr);
+        // max-width: 600px;
+        margin-top: 1em;
+    }
+    @media only screen and (max-width: 414px) {
+        -ms-grid-columns: (1fr) [2];
+        grid-template-columns: repeat(2, 1fr);
         // max-width: 600px;
         margin-top: 1em;
     }

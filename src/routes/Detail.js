@@ -103,9 +103,6 @@ export default () => {
                         </a>
                     </em>
                 </Source>
-                <Footer />
-                <br />
-                <br />
             </Wrapper>
         </Container>
     );
@@ -115,11 +112,11 @@ export default () => {
 const Wrapper = styled.div`
     font-family: var(--ff-secondary);
     color: white;
-    margin-top: 30px;
+    margin-top: 60px;
 `;
 const LogoWrap = styled.div`
     display: flex;
-    padding: 2em 0 1.5em 0;
+    padding: 1.5em 0;
     text-align: left;
 `;
 const Logo = styled.div`

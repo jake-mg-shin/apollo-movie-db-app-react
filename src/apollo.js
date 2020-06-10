@@ -1,8 +1,8 @@
 import ApolloClient from 'apollo-boost';
 
 const client = new ApolloClient({
-    // uri: 'https://movie-api-graphql.now.sh/',
-    uri: 'http://localhost:4000/',
+    uri: 'https://movie-api-graphql.now.sh/',
+    // uri: 'http://localhost:4000/',
     resolvers: {
         Movie: {
             isLiked: () => false,
