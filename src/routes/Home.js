@@ -42,7 +42,7 @@ export default () => {
 
                     <Bg>
                         <Container>
-                            <br />
+                            <br id='movies' />
                             <Title>Movies</Title>
                             <SubTitle>
                                 <i className='fas fa-ellipsis-v'></i> &nbsp;Our
@@ -73,7 +73,7 @@ export default () => {
                                 </em>
                             </Source>
                             <br />
-                            <Title>News</Title>
+                            <Title id='news'>News</Title>
                             <SubTitle>
                                 <i className='fas fa-ellipsis-v'></i>{' '}
                                 &nbsp;Latest News

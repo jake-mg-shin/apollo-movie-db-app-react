@@ -21,10 +21,10 @@ export default ({ id, bg, rating, isLiked }) => {
             <MovieWrapper>
                 <Link to={`/movie/${id}`}>
                     <Poster src={bg} />
+                    <Overlay>
+                        <Button>Learn More</Button>
+                    </Overlay>
                 </Link>
-                <Overlay>
-                    <Button>Learn More</Button>
-                </Overlay>
             </MovieWrapper>
             <Content>
                 <Rating>
@@ -116,7 +116,7 @@ const Button = styled.div`
     position: absolute;
     color: white;
     font-weight: bold;
-    top: 45%;
+    top: 50%;
     left: 50%;
     // min-width: 200px;
     -webkit-transform: translate(-50%, -50%);

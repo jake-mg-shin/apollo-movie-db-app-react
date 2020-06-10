@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Container } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 const Nav = () => {
     const refreshPage = () => {
@@ -9,28 +11,29 @@ const Nav = () => {
 
     return (
         <Container>
-            {/* <Wrapper> */}
             <Navbar>
                 <LogoWrap href='#' onClick={refreshPage}>
                     <Logo>M2DB</Logo>
                 </LogoWrap>
                 <MenuWrap>
-                    <Menu>About</Menu>
-                    <Menu>Movies</Menu>
-                    <Menu>News</Menu>
+                    <Link to={`/about`}>
+                        <Menu>About</Menu>
+                    </Link>
+                    <AnchorLink href='#movies'>
+                        <Menu>Movies</Menu>
+                    </AnchorLink>
+                    <AnchorLink href='#news'>
+                        <Menu>News</Menu>
+                    </AnchorLink>
                 </MenuWrap>
             </Navbar>
-            {/* </Wrapper> */}
         </Container>
     );
 };
 
 export default Nav;
 
-const Wrapper = styled.section`
-    margin: 0 auto;
-    position: absolute;
-`;
+// Style
 const Navbar = styled.div`
     background-color: black;
     opacity: 0.8;
