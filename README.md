@@ -1,7 +1,7 @@
-# My Movie DB App
+# Apollo Movie DB App
 Movie App with React.js and Apollo-Client
 
->This App is the Client-Side of ***[My Movie DB App](https://github.com/jake-mg-shin/movie-app-v2)***. The whole data is from ***[My Movie DB API](https://movie-api-graphql.now.sh/)*** (***[Learn More of My Movie DB API](https://github.com/jake-mg-shin/my-movie-db-api-graphql)***.
+>This App is the Client-Side of ***[Apollo Movie DB App](https://github.com/jake-mg-shin/movie-app-v2)***. The whole data is from ***[Apollo Movie DB API](https://movie-api-graphql.now.sh/)*** (***[Learn More of Apollo Movie DB API](https://github.com/jake-mg-shin/my-movie-db-api-graphql)***.
 
 ## About
 
