@@ -47,7 +47,7 @@ export default () => {
                             <Title>Movies</Title>
                             <SubTitle>
                                 <Icon name='ellipsis vertical' />
-                                &nbsp;Our the Highest Rating Movies
+                                &nbsp;Best-Rated Movies
                             </SubTitle>
                             {!loading && (
                                 <Movies>
@@ -79,7 +79,7 @@ export default () => {
                             <Title id='news'>News</Title>
                             <SubTitle>
                                 <Icon name='ellipsis vertical' />
-                                &nbsp;Latest News
+                                &nbsp;Latest Movie News
                             </SubTitle>
                             <br />
                             <News />

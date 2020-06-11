@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Container, Popup } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
@@ -6,6 +6,10 @@ import { Link } from 'react-router-dom';
 import Footer from '../layout/Footer';
 
 const About = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    });
+
     return (
         <Container>
             <Wrapper>
@@ -25,8 +29,8 @@ const About = () => {
                 </Link>
 
                 <SubTitle>
-                    This App provides movies' details and trailers, and the
-                    latest news.
+                    This App provides details of movies and trailers, and the
+                    latest movie news.
                 </SubTitle>
                 <br />
                 <Desc>

@@ -39,7 +39,7 @@ export default ({ id, bg, rating, isLiked }) => {
                         style={{ zIndex: '10', backgroundColor: 'black' }}
                     >
                         {isLiked ? (
-                            <Icon name='heart ' color='red' />
+                            <Icon name='heart' color='red' />
                         ) : (
                             <Icon name='heart outline' color='red' />
                         )}
@@ -122,18 +122,9 @@ const Content = styled.div`
 `;
 const Rating = styled.div``;
 const Like = styled.div`
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    padding: 0.5rem;
-    font-size: 16px;
-    width: 100%;
-    height: auto;
+    background-color: black;
+
+    :hover {
+        cursor: pointer;
+    }
 `;
