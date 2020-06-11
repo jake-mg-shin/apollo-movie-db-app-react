@@ -13,7 +13,7 @@ const Nav = () => {
         <Container>
             <Navbar>
                 <LogoWrap href='#' onClick={refreshPage}>
-                    <Logo>M2DB</Logo>
+                    <Logo>AMDB</Logo>
                 </LogoWrap>
                 <MenuWrap>
                     <Link to={`/about`}>

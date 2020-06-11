@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Container } from 'semantic-ui-react';
+import { Container, Popup } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 import Footer from '../layout/Footer';
@@ -13,7 +13,14 @@ const About = () => {
                 <br />
                 <Link to='/'>
                     <LogoWrap>
-                        <Logo>M2DB</Logo>
+                        <Popup
+                            content='Back to Home'
+                            open
+                            position='right center'
+                            inverted
+                            size='mini'
+                            trigger={<Logo>AMDB</Logo>}
+                        />
                     </LogoWrap>
                 </Link>
 
@@ -30,13 +37,26 @@ const About = () => {
                 <Desc>
                     <em>
                         Server-Side is built with Apollo-Server and GraphQL.
+                        <br />
+                        <strong>
+                            Learn More about Server-Side{' '}
+                            <span role='img' aria-label='finger'>
+                                👉🏻
+                            </span>{' '}
+                            <a
+                                href='https://movie-api-graphql.now.sh/'
+                                target='blank'
+                            >
+                                Here
+                            </a>
+                        </strong>
                     </em>
                 </Desc>
                 <br />
                 <br />
                 <Ver>Version: 1.0.0</Ver>
             </Wrapper>
-            {/* <Footer /> */}
+            <Footer />
         </Container>
     );
 };
@@ -77,11 +97,11 @@ const Title = styled.div`
 `;
 const SubTitle = styled.p`
     font-size: var(--fs-body);
-    opacity: 0.8;
+    opacity: 0.7;
 `;
 const Desc = styled(SubTitle)`
     font-size: var(--fs-small);
-    opacity: 1;
+    opacity: 0.9;
 `;
 const Ver = styled(SubTitle)`
     font-size: var(--fs-small);

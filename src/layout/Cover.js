@@ -8,7 +8,7 @@ const Cover = () => {
                 <Screen>
                     <Text>Don't miss out!</Text>
                     <Text>Experience a special Movie DB for you</Text>
-                    <ScrLogo>My Movie DB</ScrLogo>
+                    <ScrLogo>Apollo Movie DB</ScrLogo>
                 </Screen>
             </ScreenWrap>
         </BgImage>
@@ -79,8 +79,12 @@ const ScreenWrap = styled.div`
     @media only screen and (max-width: 460px) {
         left: 40%;
         width: 220px;
-        height: 140px;
+        height: 120px;
     }
+    // @media only screen and (max-width: 414px) {
+    //     width: 220px;
+    //     height: 120px;
+    // }
 
     animation: 2s ${slideFade} 1s forwards;
 `;
@@ -127,8 +131,12 @@ const Screen = styled.div`
     @media only screen and (max-width: 460px) {
         padding: 10px;
         width: 200px;
-        height: 120px;
+        height: 100px;
     }
+    // @media only screen and (max-width: 414px) {
+    //     width: 200px;
+    //     height: 100px;
+    // }
 `;
 const Text = styled.p`
     font-size: var(--fs-h3);

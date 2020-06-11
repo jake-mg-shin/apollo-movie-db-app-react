@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 import styled from 'styled-components';
-import { Dimmer, Loader, Container } from 'semantic-ui-react';
+import { Dimmer, Loader, Container, Icon } from 'semantic-ui-react';
 
 import Nav from '../layout/Nav';
 import Movie from '../components/Movie';
@@ -38,6 +38,7 @@ export default () => {
             ) : (
                 <Fragment>
                     <Nav />
+
                     <Cover />
 
                     <Bg>
@@ -45,22 +46,23 @@ export default () => {
                             <br id='movies' />
                             <Title>Movies</Title>
                             <SubTitle>
-                                <i className='fas fa-ellipsis-v'></i> &nbsp;Our
-                                the Highest Rating Movies
+                                <Icon name='ellipsis vertical' />
+                                &nbsp;Our the Highest Rating Movies
                             </SubTitle>
-                            {/* <br /> */}
-                            <Movies>
-                                {data?.movies?.map((m, i) => (
-                                    <Movie
-                                        key={i}
-                                        id={m.id}
-                                        bg={m.medium_cover_image}
-                                        title={m.title}
-                                        rating={m.rating}
-                                        isLiked={m.isLiked}
-                                    />
-                                ))}
-                            </Movies>
+                            {!loading && (
+                                <Movies>
+                                    {data?.movies?.map((m, i) => (
+                                        <Movie
+                                            key={i}
+                                            id={m.id}
+                                            bg={m.medium_cover_image}
+                                            title={m.title}
+                                            rating={m.rating}
+                                            isLiked={m.isLiked}
+                                        />
+                                    ))}
+                                </Movies>
+                            )}
                             <Source>
                                 <em>
                                     Source:{' '}
@@ -76,7 +78,7 @@ export default () => {
                             <br />
                             <Title id='news'>News</Title>
                             <SubTitle>
-                                <i className='fas fa-ellipsis-v'></i>{' '}
+                                <Icon name='ellipsis vertical' />
                                 &nbsp;Latest News
                             </SubTitle>
                             <br />
@@ -94,6 +96,7 @@ export default () => {
                             </Source>
                         </Container>
                     </Bg>
+                    <Footer />
                 </Fragment>
             )}
         </Fragment>
@@ -103,6 +106,7 @@ export default () => {
 // Style
 const Bg = styled.div`
     background-color: black;
+    color: white;
 `;
 const Title = styled.div`
     font-family: var(--ff-secondary);
@@ -113,12 +117,12 @@ const Title = styled.div`
 const SubTitle = styled.div`
     font-family: var(--ff-primary);
     font-size: var(--fs-body);
-    color: white;
 `;
-
 const Movies = styled.div`
     position: relative;
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: (1fr) [5];
     grid-template-columns: repeat(5, 1fr);
     margin: 0 auto;
     grid-auto-flow: row dense;
@@ -127,24 +131,20 @@ const Movies = styled.div`
     @media only screen and (max-width: 1024px) {
         -ms-grid-columns: (1fr) [4];
         grid-template-columns: repeat(4, 1fr);
-        // max-width: 1000px;
         margin-top: 3em;
     }
     @media only screen and (max-width: 768px) {
         -ms-grid-columns: (1fr) [3];
         grid-template-columns: repeat(3, 1fr);
-        // max-width: 600px;
         margin-top: 1em;
     }
     @media only screen and (max-width: 414px) {
         -ms-grid-columns: (1fr) [2];
         grid-template-columns: repeat(2, 1fr);
-        // max-width: 600px;
         margin-top: 1em;
     }
 `;
 const Source = styled.div`
-    color: white;
-    opacity: 0.8;
     text-align: right;
+    opacity: 0.8;
 `;

@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 import styled from 'styled-components';
-import { Dimmer, Loader, Container } from 'semantic-ui-react';
+import { Dimmer, Loader, Container, Popup, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 import Trailers from '../components/Trailers';
@@ -28,6 +28,10 @@ const GET_MOVIE = gql`
 `;
 
 export default () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    });
+
     let { id } = useParams();
 
     const { loading, err, data } = useQuery(GET_MOVIE, {
@@ -46,22 +50,27 @@ export default () => {
             <Wrapper>
                 <Link to='/'>
                     <LogoWrap>
-                        <Logo>M2DB</Logo>
+                        <Popup
+                            content='Back to Home'
+                            open
+                            position='right center'
+                            inverted
+                            size='mini'
+                            trigger={<Logo>AMDB</Logo>}
+                        />
                     </LogoWrap>
                 </Link>
+
                 <br />
                 <Title>Details</Title>
-                {/* <SubTitle>
-                    <i className='fas fa-ellipsis-v'></i> &nbsp;Our the Highest
-                    Rating Movies
-                </SubTitle> */}
+                <SubTitle>
+                    <Icon name='ellipsis vertical' />
+                    &nbsp;Check the Details
+                </SubTitle>
                 <br />
 
                 <Content>
                     <Poster src={data?.movie?.medium_cover_image} />
-
-                    {/* <Column> */}
-
                     {!loading && (
                         <DescWrapper>
                             <ConTitle>{data?.movie?.title}</ConTitle>
@@ -79,19 +88,19 @@ export default () => {
                             </Description>
                         </DescWrapper>
                     )}
-                    {/* </Column> */}
                 </Content>
                 <br />
                 <br />
                 <br />
                 <Title>Trailer</Title>
-                {/* <SubTitle>
-                    <i className='fas fa-ellipsis-v'></i> &nbsp;Our the Highest
-                    Rating Movies
-                </SubTitle> */}
+                <SubTitle>
+                    <Icon name='ellipsis vertical' />
+                    &nbsp;Watch the Trailer
+                </SubTitle>
                 <br />
 
                 <Trailers title={data?.movie?.title} />
+
                 <Source>
                     <em>
                         Source:{' '}
@@ -103,6 +112,7 @@ export default () => {
                         </a>
                     </em>
                 </Source>
+                <Footer />
             </Wrapper>
         </Container>
     );
@@ -114,83 +124,96 @@ const Wrapper = styled.div`
     color: white;
     margin-top: 60px;
 `;
-const LogoWrap = styled.div`
+const Wrap = styled.div`
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    padding: 1.5em 0;
+`;
+const LogoWrap = styled(Wrap)`
     text-align: left;
+    padding: 1.5em 0;
 `;
 const Logo = styled.div`
-    font-size: var(--fs-h3);
     font-family: 'Monoton', cursive;
+    font-size: var(--fs-h3);
     color: black;
-    border: 1px solid var(--clr-accent);
-    background-color: var(--clr-accent);
-    border-radius: 5px;
     padding: 0.6rem;
+    border: 1px solid var(--clr-accent);
+    border-radius: 5px;
+    background-color: var(--clr-accent);
+    -webkit-transition: background-color 0.2s ease-in-out;
+    -o-transition: background-color 0.2s ease-in-out;
     transition: background-color 0.2s ease-in-out;
 
     :hover {
+        color: white;
         border-color: white;
         background-color: black;
-        color: white;
+        -webkit-transition: border 0.5s ease-in-out;
+        -o-transition: border 0.5s ease-in-out;
         transition: border 0.5s ease-in-out;
     }
 `;
 const Title = styled.div`
-    font-family: var(--ff-secondary);
     font-size: var(--fs-h3);
     color: var(--clr-accent);
-    padding: 1rem 0 1rem 0;
+    padding: 1rem 0;
 `;
 const SubTitle = styled.div`
     font-family: var(--ff-primary);
     font-size: var(--fs-body);
-    color: white;
 `;
-
-const Content = styled.div`
+const Content = styled(Wrap)`
     position: relative;
-    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 0.5rem;
     border: 1px solid white;
+    -webkit-box-shadow: 1px 1px 0px #999, 2px 2px 0px #999, 3px 3px 0px #999,
+        4px 4px 0px #999, 5px 5px 0px #999;
     box-shadow: 1px 1px 0px #999, 2px 2px 0px #999, 3px 3px 0px #999,
         4px 4px 0px #999, 5px 5px 0px #999;
+
+    @media only screen and (max-width: 992px) {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
 `;
 const Poster = styled.img`
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    width: 25%;
+    width: 30%;
     height: auto;
-    // padding: 2em 0;
 `;
-const DescWrapper = styled.div`
-    display: flex;
+const DescWrapper = styled(Wrap)`
     flex-direction: column;
-    width: 70%;
-    // padding-left: 2em;
+    width: 100%;
+    opacity: 0.8;
 `;
-const ConTitle = styled.h1`
+const Text = styled.div`
+    font-family: var(--ff-primary);
     font-size: var(--fs-h3);
-    padding: 10px;
-`;
-const ConSub = styled.div`
-    font-size: var(--fs-body);
+    margin-top: 10px;
     margin-bottom: 10px;
     padding: 10px;
 `;
-const Description = styled.p`
-    font-size: 15px;
-    padding: 10px;
+const ConTitle = styled(Text)``;
+const ConSub = styled(Text)`
+    font-size: var(--fs-body);
 `;
-
-// const Column = styled.div`
-//     margin-left: 10px;
-//     width: 50%;
-// `;
-
+const Description = styled(Text)`
+    font-family: var(--ff-secondary);
+    font-size: var(--fs-small);
+`;
 const Source = styled.div`
-    color: white;
-    opacity: 0.8;
     text-align: right;
+    opacity: 0.8;
 `;

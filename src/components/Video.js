@@ -4,8 +4,6 @@ import styled from 'styled-components';
 
 export default ({ title, id }) => {
     let url = 'https://www.youtube.com/watch?v=' + id;
-    // console.log(title, word);
-    // console.log(url);
 
     return (
         <Wrapper>

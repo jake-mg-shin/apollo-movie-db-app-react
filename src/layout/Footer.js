@@ -7,8 +7,8 @@ export default () => {
         <Container>
             <Footer>
                 <Title>
-                    This is MyMovieDB Project built by Dev.JS with React.js,
-                    Apollo, and GraphQL.
+                    This is Apollo Movie DB Project built by Dev.JS with
+                    React.js, Apollo, and GraphQL.
                 </Title>
                 <br />
                 <br />
