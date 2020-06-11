@@ -5,13 +5,12 @@ Movie App with React.js and Apollo-Client
 
 ## About
 
-- Provide movies' details which sorted by a API, and the latest news of movies.
-- Provide a trailer of the movie's details from YouTube.
+- Provides details of movies and trailers, and the latest movie news.
 
 ## Built with
 
 - React.js | Apollo-Client
-- Git | Github | Vercel
+- Git | Github | Netlify
 
 ## Contact
 
