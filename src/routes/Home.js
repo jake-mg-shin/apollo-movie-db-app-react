@@ -63,6 +63,7 @@ export default () => {
                                     ))}
                                 </Movies>
                             )}
+                            <br />
                             <Source>
                                 <em>
                                     Source:{' '}
@@ -83,6 +84,7 @@ export default () => {
                             </SubTitle>
                             <br />
                             <News />
+                            <br />
                             <Source>
                                 <em>
                                     Source:{' '}

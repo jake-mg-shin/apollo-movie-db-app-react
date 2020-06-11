@@ -90,6 +90,15 @@ export default () => {
                     )}
                 </Content>
                 <br />
+                <Source>
+                    <em>
+                        Source:{' '}
+                        <a href='https://yts.mx/api' target='_black'>
+                            https://yts.mx/api
+                        </a>
+                    </em>
+                </Source>
+                <br />
                 <br />
                 <br />
                 <Title>Trailer</Title>
@@ -98,9 +107,8 @@ export default () => {
                     &nbsp;Watch the Trailer
                 </SubTitle>
                 <br />
-
                 <Trailers title={data?.movie?.title} />
-
+                <br />
                 <Source>
                     <em>
                         Source:{' '}
