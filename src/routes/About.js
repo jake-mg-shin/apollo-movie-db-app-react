@@ -41,7 +41,7 @@ const About = () => {
                 <Desc>
                     <em>
                         Server-Side is built with Apollo-Server and GraphQL.
-                        <br />
+                        {/* <br />
                         <strong>
                             Learn More about Server-Side{' '}
                             <span role='img' aria-label='finger'>
@@ -53,7 +53,7 @@ const About = () => {
                             >
                                 Here
                             </a>
-                        </strong>
+                        </strong> */}
                     </em>
                 </Desc>
                 <br />
