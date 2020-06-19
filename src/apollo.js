@@ -1,7 +1,9 @@
 import ApolloClient from 'apollo-boost';
 
+const API_KEY = `${process.env.REACT_APP_API_KEY}`;
+
 const client = new ApolloClient({
-    uri: 'https://movie-api-graphql.vercel.app/',
+    uri: API_KEY,
     // uri: 'http://localhost:4000/',
     resolvers: {
         Movie: {

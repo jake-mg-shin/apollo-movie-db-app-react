@@ -23,10 +23,10 @@ const GET_NEWS = gql`
 `;
 
 const News = () => {
-    const { loading, err, data } = useQuery(GET_NEWS);
+    const { loading, error, data } = useQuery(GET_NEWS);
     // console.log(loading, data);
 
-    if (err) return <p>An error occurred</p>;
+    if (error) return <p>An error occurred</p>;
 
     const responsive = {
         desktop: {

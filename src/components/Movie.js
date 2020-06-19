@@ -64,6 +64,10 @@ const MovieWrapper = styled(Wrapper)`
         cursor: pointer;
     }
 `;
+const Poster = styled.img`
+    width: 100%;
+    height: auto;
+`;
 const Overlay = styled(Wrapper)`
     position: absolute;
     top: 0;
@@ -106,10 +110,6 @@ const Button = styled(Wrapper)`
         -o-transition: background-color 0.5s ease-in-out;
         transition: background-color 0.5s ease-in-out;
     }
-`;
-const Poster = styled.img`
-    width: 100%;
-    height: auto;
 `;
 const Content = styled.div`
     display: flex;

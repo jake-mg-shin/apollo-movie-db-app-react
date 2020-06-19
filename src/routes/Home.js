@@ -23,11 +23,11 @@ const GET_MOVIES = gql`
 `;
 
 export default () => {
-    const { loading, err, data } = useQuery(GET_MOVIES, {
+    const { loading, error, data } = useQuery(GET_MOVIES, {
         variables: { limit: parseInt(15) },
     });
 
-    if (err) return <p>An error occurred</p>;
+    if (error) return <p>An error occurred</p>;
 
     return (
         <Fragment>
