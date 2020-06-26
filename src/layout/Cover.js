@@ -7,7 +7,7 @@ const Cover = () => {
             <ScreenWrap>
                 <Screen>
                     <Text>Don't miss out!</Text>
-                    <Text>Experience a special Movie DB for you</Text>
+                    <Text>Experience a special Movie DB just for you</Text>
                     <ScrLogo>Apollo Movie DB</ScrLogo>
                 </Screen>
             </ScreenWrap>
