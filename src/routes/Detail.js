@@ -34,19 +34,20 @@ export default () => {
 
     let { id } = useParams();
 
-    const { loading, err, data } = useQuery(GET_MOVIE, {
+    const { loading, error, data } = useQuery(GET_MOVIE, {
         variables: { id: parseInt(id) },
     });
 
-    if (err) return <p>An error occurred</p>;
+    if (loading)
+        return (
+            <Dimmer active>
+                <Loader size='large'>Loading</Loader>
+            </Dimmer>
+        );
+    if (error) return <p>An error occurred</p>;
 
     return (
         <Container>
-            {loading && (
-                <Dimmer active>
-                    <Loader size='large'>Loading</Loader>
-                </Dimmer>
-            )}
             <Wrapper>
                 <Link to='/'>
                     <LogoWrap>
@@ -60,7 +61,6 @@ export default () => {
                         />
                     </LogoWrap>
                 </Link>
-
                 <br />
                 <Title>Details</Title>
                 <SubTitle>
@@ -68,7 +68,6 @@ export default () => {
                     &nbsp;Check the Details
                 </SubTitle>
                 <br />
-
                 <Content>
                     <Poster src={data?.movie?.medium_cover_image} />
                     {!loading && (

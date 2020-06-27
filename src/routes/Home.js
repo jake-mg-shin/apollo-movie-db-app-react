@@ -27,80 +27,70 @@ export default () => {
         variables: { limit: parseInt(15) },
     });
 
+    if (loading)
+        return (
+            <Dimmer active>
+                <Loader size='large'>Loading</Loader>
+            </Dimmer>
+        );
     if (error) return <p>An error occurred</p>;
 
     return (
         <Fragment>
-            {loading ? (
-                <Dimmer active>
-                    <Loader size='large'>Loading</Loader>
-                </Dimmer>
-            ) : (
-                <Fragment>
-                    <Nav />
-
-                    <Cover />
-
-                    <Bg>
-                        <Container>
-                            <br id='movies' />
-                            <Title>Movies</Title>
-                            <SubTitle>
-                                <Icon name='ellipsis vertical' />
-                                &nbsp;Best-Rated Movies
-                            </SubTitle>
-                            {!loading && (
-                                <Movies>
-                                    {data?.movies?.map((m, i) => (
-                                        <Movie
-                                            key={i}
-                                            id={m.id}
-                                            bg={m.medium_cover_image}
-                                            title={m.title}
-                                            rating={m.rating}
-                                            isLiked={m.isLiked}
-                                        />
-                                    ))}
-                                </Movies>
-                            )}
-                            <br />
-                            <Source>
-                                <em>
-                                    Source:{' '}
-                                    <a
-                                        href='https://yts.mx/api'
-                                        target='_black'
-                                    >
-                                        https://yts.mx/api
-                                    </a>
-                                </em>
-                            </Source>
-                            <br />
-                            <br />
-                            <Title id='news'>News</Title>
-                            <SubTitle>
-                                <Icon name='ellipsis vertical' />
-                                &nbsp;Latest Movie News
-                            </SubTitle>
-                            <br />
-                            <News />
-                            <br />
-                            <Source>
-                                <em>
-                                    Source:{' '}
-                                    <a
-                                        href='https://movieweb.com/rss/'
-                                        target='_black'
-                                    >
-                                        https://movieweb.com/rss/
-                                    </a>
-                                </em>
-                            </Source>
-                        </Container>
-                    </Bg>
-                    <Footer />
-                </Fragment>
-            )}
+            <Nav />
+            <Cover />
+            <Bg>
+                <Container>
+                    <br id='movies' />
+                    <Title>Movies</Title>
+                    <SubTitle>
+                        <Icon name='ellipsis vertical' />
+                        &nbsp;Best-Rated Movies
+                    </SubTitle>
+                    {!loading && (
+                        <Movies>
+                            {data?.movies?.map((movie, index) => (
+                                <Movie
+                                    key={index}
+                                    id={movie.id}
+                                    bg={movie.medium_cover_image}
+                                    title={movie.title}
+                                    rating={movie.rating}
+                                    isLiked={movie.isLiked}
+                                />
+                            ))}
+                        </Movies>
+                    )}
+                    <br />
+                    <Source>
+                        <em>
+                            Source:{' '}
+                            <a href='https://yts.mx/api' target='_black'>
+                                https://yts.mx/api
+                            </a>
+                        </em>
+                    </Source>
+                    <br />
+                    <br />
+                    <Title id='news'>News</Title>
+                    <SubTitle>
+                        <Icon name='ellipsis vertical' />
+                        &nbsp;Latest Movie News
+                    </SubTitle>
+                    <br />
+                    <News />
+                    <br />
+                    <Source>
+                        <em>
+                            Source:{' '}
+                            <a href='https://movieweb.com/rss/' target='_black'>
+                                https://movieweb.com/rss/
+                            </a>
+                        </em>
+                    </Source>
+                </Container>
+            </Bg>
+            <Footer />
         </Fragment>
     );
 };
