@@ -10,8 +10,8 @@ const Nav = () => {
     };
 
     return (
-        <Container>
-            <Navbar>
+        <Navbar>
+            <Container style={{ display: 'flex' }}>
                 <LogoWrap href='#' onClick={refreshPage}>
                     <Logo>AMDB</Logo>
                 </LogoWrap>
@@ -26,8 +26,8 @@ const Nav = () => {
                         <Menu>News</Menu>
                     </AnchorLink>
                 </MenuWrap>
-            </Navbar>
-        </Container>
+            </Container>
+        </Navbar>
     );
 };
 
